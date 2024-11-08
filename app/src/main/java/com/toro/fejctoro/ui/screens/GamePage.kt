@@ -8,26 +8,23 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.toro.fejctoro.ui.theme.FEJCToroTheme
 
 @Composable
-fun MoviePage(navController: NavController) {
-    Column (
-      modifier = Modifier
-          .fillMaxSize(),
+fun GamePage(navController: NavController) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("My Favorite Movie")
+        Text("My Favorite Games", fontSize = 24.sp)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun MoviePagePreview() {
-    FEJCToroTheme {
-        MoviePage(navController = rememberNavController())
-    }
+fun GamePagePreview() {
+    GamePage(navController = rememberNavController())
 }
