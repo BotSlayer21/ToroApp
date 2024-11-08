@@ -25,7 +25,7 @@ fun MoviePage() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("Ini Halaman Movie Page")
+        Text("My Favorite Movie")
     }
 }
 

@@ -91,7 +91,7 @@ fun HomeScreen(navController: NavController? = null) {
                 // Tombol "Screen 1"
                 Button(
                     onClick = {
-                        navController?.navigate("MoviePage")
+                        navController?.navigate("moviepage")
                     },
                     modifier = Modifier
                         .fillMaxWidth(0.6f)
@@ -113,7 +113,7 @@ fun HomeScreen(navController: NavController? = null) {
 
                 // Tombol "Screen 2"
                 Button(
-                    onClick = { /* Handle daftar action */ },
+                    onClick = { navController?.navigate("gamepage")},
                     modifier = Modifier
                         .fillMaxWidth(0.6f)
                         .height(48.dp),
@@ -134,7 +134,7 @@ fun HomeScreen(navController: NavController? = null) {
 
                 // Tombol "About"
                 Button(
-                    onClick = { /* Handle masuk action */ },
+                    onClick = { navController?.navigate("aboutpage") },
                     modifier = Modifier
                         .fillMaxWidth(0.6f)
                         .height(48.dp),

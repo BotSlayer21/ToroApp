@@ -9,21 +9,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun AboutPage() {
+fun GamePage() {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("About Me", fontSize = 24.sp)
+        Text("My Favorite Games", fontSize = 24.sp)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun AboutPreview() {
-    AboutPage()
+fun GamePagePreview() {
+    GamePage()
 }
