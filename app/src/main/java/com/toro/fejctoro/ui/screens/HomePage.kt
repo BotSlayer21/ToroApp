@@ -80,11 +80,11 @@ fun HomeScreen(navController: NavController? = null) {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Logo aplikasi
-                Image(
-                    painter = painterResource(id = R.drawable.toro),
-                    contentDescription = "Foto",
-                    modifier = Modifier.size(200.dp)
-                )
+//                Image(
+//                    painter = painterResource(id = R.drawable.toro),
+//                    contentDescription = "Foto",
+//                    modifier = Modifier.size(200.dp)
+//                )
 
                 Spacer(modifier = Modifier.height(32.dp))
 
@@ -121,7 +121,7 @@ fun HomeScreen(navController: NavController? = null) {
                     shape = RoundedCornerShape(24.dp)
                 ) {
                     Text(
-                        text = "Screen 2",
+                        text = "Lazy Grid",
                         style = TextStyle(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.SemiBold,
