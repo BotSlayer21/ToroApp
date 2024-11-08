@@ -25,7 +25,8 @@ class MainActivity : ComponentActivity() {
                 NavHost(navController = navController, startDestination = "Home") {
                     composable("home") { HomeScreen(navController=navController) }
                     composable("moviepage") {MoviePage(navController)}
-                    composable("gamepage") {GamePage()}
+                    composable("gamepage") {GamePage(navController)}
+
                 }
             }
         }
