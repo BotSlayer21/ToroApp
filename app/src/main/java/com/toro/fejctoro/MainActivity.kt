@@ -13,6 +13,9 @@ import androidx.navigation.compose.rememberNavController
 import com.toro.fejctoro.ui.screens.GamePage
 import com.toro.fejctoro.ui.screens.MoviePage
 import com.toro.fejctoro.ui.screens.HomeScreen
+import com.toro.fejctoro.ui.screens.DetailMusicPage
+import com.toro.fejctoro.ui.screens.DetailGamePage
+import com.toro.fejctoro.ui.screens.DetailMoviePage
 import com.toro.fejctoro.ui.theme.FEJCToroTheme
 
 class MainActivity : ComponentActivity() {
@@ -26,6 +29,9 @@ class MainActivity : ComponentActivity() {
                     composable("home") { HomeScreen(navController=navController) }
                     composable("moviepage") {MoviePage(navController)}
                     composable("gamepage") {GamePage(navController)}
+                    composable("detailgamepage") {DetailGamePage(navController)}
+                    composable("detailmoviepage") {DetailMoviePage(navController)}
+                    composable("detailmoviepage") {DetailMusicPage(navController)}
 
                 }
             }

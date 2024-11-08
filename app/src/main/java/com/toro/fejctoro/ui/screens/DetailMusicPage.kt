@@ -13,18 +13,18 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun DetailGamePage(navController: NavController){
+fun DetailMusicPage(navController: NavController){
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("Games Detail", fontSize = 24.sp)
+        Text("Music Detail", fontSize = 24.sp)
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun DetailGamePagePreview() {
-    DetailGamePage(navController = rememberNavController())
+fun DetailMusicPagePreview() {
+    DetailMusicPage(navController = rememberNavController())
 }
