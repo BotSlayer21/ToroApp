@@ -10,7 +10,11 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -27,27 +31,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.toro.fejctoro.R
+import com.toro.fejctoro.ui.components.CustomTopAppBar
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AboutPage(navController: NavController) {
     Scaffold (
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = "About Me",
-                        color = Color.White,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor =  Color(0xFF4CAF50)
-                )
-            )
+            CustomTopAppBar(navController = navController, title = "About Me")
         },
-
         content = { padding ->
             Column (
                 modifier = Modifier
@@ -64,8 +55,7 @@ fun AboutPage(navController: NavController) {
                     text = "This page is about me",
                 )
 
-                Spacer(modifier = Modifier
-                    .height(20.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 Image(
                     painter = painterResource(id = R.drawable.toro),
@@ -73,8 +63,7 @@ fun AboutPage(navController: NavController) {
                     modifier = Modifier.size(200.dp)
                 )
 
-                Spacer(modifier = Modifier
-                    .height(20.dp))
+                Spacer(modifier = Modifier.height(20.dp))
 
                 Text(text = "Nama : Triantoro Rizky Anggara")
                 Text(text = "Email : t21rizkianggara@gmail.com")

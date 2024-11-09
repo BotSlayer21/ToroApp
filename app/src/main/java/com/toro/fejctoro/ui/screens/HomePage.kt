@@ -33,25 +33,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.toro.fejctoro.R
+import com.toro.fejctoro.ui.components.HomeTopAppBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController? = null) {
     Scaffold(
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = "Home",
-                        color = Color.White,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor =  Color(0xFF4CAF50)
-                )
-            )
+            HomeTopAppBar(title = "Toro App")
         },
         content = { padding ->
             Column(
@@ -86,12 +75,12 @@ fun HomeScreen(navController: NavController? = null) {
 //                    modifier = Modifier.size(200.dp)
 //                )
 
-                Spacer(modifier = Modifier.height(32.dp))
+                Spacer(modifier = Modifier.height(30.dp))
 
                 // Tombol "Screen 1"
                 Button(
                     onClick = {
-                        navController?.navigate("moviepage")
+                        navController?.navigate("moviemusicpage")
                     },
                     modifier = Modifier
                         .fillMaxWidth(0.6f)
@@ -100,7 +89,7 @@ fun HomeScreen(navController: NavController? = null) {
                     shape = RoundedCornerShape(24.dp)
                 ) {
                     Text(
-                        text = "Lazy Column & Row",
+                        text = "Favorite Movie & Music",
                         style = TextStyle(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.SemiBold,
@@ -121,7 +110,7 @@ fun HomeScreen(navController: NavController? = null) {
                     shape = RoundedCornerShape(24.dp)
                 ) {
                     Text(
-                        text = "Lazy Grid",
+                        text = "Favorite Games",
                         style = TextStyle(
                             fontSize = 18.sp,
                             fontWeight = FontWeight.SemiBold,
@@ -134,7 +123,7 @@ fun HomeScreen(navController: NavController? = null) {
 
                 // Tombol "About"
                 Button(
-                    onClick = { navController?.navigate("aboutpage") },
+                    onClick = { navController?.navigate("about") },
                     modifier = Modifier
                         .fillMaxWidth(0.6f)
                         .height(48.dp),

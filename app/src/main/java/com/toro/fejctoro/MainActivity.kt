@@ -10,8 +10,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.toro.fejctoro.ui.screens.AboutPage
 import com.toro.fejctoro.ui.screens.GamePage
-import com.toro.fejctoro.ui.screens.MoviePage
+import com.toro.fejctoro.ui.screens.MovieMusicPage
 import com.toro.fejctoro.ui.screens.HomeScreen
 import com.toro.fejctoro.ui.screens.DetailMusicPage
 import com.toro.fejctoro.ui.screens.DetailGamePage
@@ -24,15 +25,24 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent{
             val navController = rememberNavController()
-            MaterialTheme {
-                NavHost(navController = navController, startDestination = "Home") {
+            FEJCToroTheme {
+                NavHost(navController = navController, startDestination = "home") {
                     composable("home") { HomeScreen(navController=navController) }
-                    composable("moviepage") {MoviePage(navController)}
+                    composable("moviemusicpage") {MovieMusicPage(navController)}
                     composable("gamepage") {GamePage(navController)}
-                    composable("detailgamepage") {DetailGamePage(navController)}
-                    composable("detailmoviepage") {DetailMoviePage(navController)}
-                    composable("detailmoviepage") {DetailMusicPage(navController)}
-
+                    composable("about") {AboutPage(navController)}
+                    composable("detailgamepage/{gameId}") { backStackEntry ->
+                        val gameId = backStackEntry.arguments?.getString("gameId")
+                        DetailGamePage(navController = navController, gameId = gameId?: "")
+                    }
+                    composable("detailmoviepage/{movieId}") { backStackEntry ->
+                        val movieId = backStackEntry.arguments?.getString("movieId")
+                        DetailMoviePage(navController = navController, movieId = movieId ?: "")
+                    }
+                    composable("detailmusicpage/{musicId}") { backStackEntry ->
+                        val musicId = backStackEntry.arguments?.getString("musicId")
+                        DetailMusicPage(navController = navController, musicId = musicId ?: "")
+                    }
                 }
             }
         }
@@ -43,6 +53,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     FEJCToroTheme {
-        HomeScreen()
+        HomeScreen(navController = rememberNavController())
     }
 }
