@@ -13,11 +13,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,16 +30,19 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.toro.fejctoro.ui.components.BottomNavBar
 import com.toro.fejctoro.ui.components.CustomTopAppBar
 import com.toro.fejctoro.ui.models.DataGame
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun GamePage(navController: NavController){
     val gameList = DataGame.getGameData()
     Scaffold (
         topBar = {
-            CustomTopAppBar(navController=navController, title = "Toro App - Games")
+            CustomTopAppBar(navController=navController, title = "Games")
+        },
+        bottomBar = {
+            BottomNavBar(navController = navController)
         },
         content = { padding ->
             Column (
@@ -50,19 +50,18 @@ fun GamePage(navController: NavController){
                     .statusBarsPadding()
                     .navigationBarsPadding()
                     .fillMaxSize()
-                    .background(Color(0xFFD9EAD3))
+                    .background(Color(0xFFF1F3C2))
                     .padding(padding),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ){
                 Text(
-                    text = "My Favorite Games",
+                    "My Favorite Games",
                     fontSize = 24.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color(0xFF2E7D32),
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
-
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
                     verticalArrangement = Arrangement.spacedBy(16.dp),

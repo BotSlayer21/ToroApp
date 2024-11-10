@@ -9,19 +9,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -33,14 +28,19 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.toro.fejctoro.R
+import com.toro.fejctoro.ui.components.BottomNavBar
 import com.toro.fejctoro.ui.components.HomeTopAppBar
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(navController: NavController? = null) {
     Scaffold(
         topBar = {
-            HomeTopAppBar(title = "Toro App")
+            HomeTopAppBar(title = "My Favorite List App")
+        },
+        bottomBar = {
+            if (navController != null) {
+                BottomNavBar(navController=navController)
+            }
         },
         content = { padding ->
             Column(
@@ -48,16 +48,15 @@ fun HomeScreen(navController: NavController? = null) {
                     .statusBarsPadding()
                     .navigationBarsPadding()
                     .fillMaxSize()
-                    .background(Color(0xFFD9EAD3))
+                    .background(Color(0xFFF1F3C2))
                     .padding(padding),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
                 // Nama aplikasi
                 Text(
-                    text = "Tugas Front End \n " +
-                            "Jetpack Compose \n" +
-                            "Triantoro Rizky Anggara",
+                    "Hello my name is\n" +
+                        "Triantoro Rizky Anggara",
                     style = TextStyle(
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
@@ -65,80 +64,26 @@ fun HomeScreen(navController: NavController? = null) {
                     ),
                     textAlign = TextAlign.Center,
                 )
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Logo aplikasi
-//                Image(
-//                    painter = painterResource(id = R.drawable.toro),
-//                    contentDescription = "Foto",
-//                    modifier = Modifier.size(200.dp)
-//                )
-
-                Spacer(modifier = Modifier.height(30.dp))
-
-                // Tombol "Screen 1"
-                Button(
-                    onClick = {
-                        navController?.navigate("moviemusicpage")
-                    },
+                Spacer(modifier = Modifier.height(20.dp))
+                Image(
+                    painter = painterResource(id = R.drawable.me),
+                    contentDescription = "Foto",
                     modifier = Modifier
-                        .fillMaxWidth(0.6f)
-                        .height(48.dp),
-                    colors = ButtonDefaults.buttonColors(Color(0xFF81C784)),
-                    shape = RoundedCornerShape(24.dp)
-                ) {
-                    Text(
-                        text = "Favorite Movie & Music",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.White
-                        )
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Tombol "Screen 2"
-                Button(
-                    onClick = { navController?.navigate("gamepage")},
-                    modifier = Modifier
-                        .fillMaxWidth(0.6f)
-                        .height(48.dp),
-                    colors = ButtonDefaults.buttonColors(Color(0xFF81C784)),
-                    shape = RoundedCornerShape(24.dp)
-                ) {
-                    Text(
-                        text = "Favorite Games",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.White
-                        )
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                // Tombol "About"
-                Button(
-                    onClick = { navController?.navigate("about") },
-                    modifier = Modifier
-                        .fillMaxWidth(0.6f)
-                        .height(48.dp),
-                    colors = ButtonDefaults.buttonColors(Color(0xFF81C784)),
-                    shape = RoundedCornerShape(24.dp)
-                ) {
-                    Text(
-                        text = "About",
-                        style = TextStyle(
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.SemiBold,
-                            color = Color.White
-                        )
-                    )
-                }
+                        .background(Color.Black, CircleShape)
+                        .clip(CircleShape)
+                        .fillMaxWidth()
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    "This Application is about my favorite\n" +
+                         "Movie, Music, Games, also my profile",
+                    style = TextStyle(
+                        fontSize = 23.sp,
+//                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF4CAF50)
+                    ),
+                    textAlign = TextAlign.Center
+                )
             }
         }
     )

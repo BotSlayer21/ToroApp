@@ -1,6 +1,7 @@
 package com.toro.fejctoro.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -16,9 +17,10 @@ import androidx.compose.ui.unit.dp
 import com.toro.fejctoro.ui.models.Music
 
 @Composable
-fun MusicItem(music: Music) {
+fun MusicItem(music: Music, onClick: ()-> Unit) {
     Column (
         modifier = Modifier
+            .clickable { onClick() }
             .width(120.dp)
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally

@@ -1,37 +1,58 @@
 package com.toro.fejctoro.ui.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.toro.fejctoro.ui.models.Movie
 
 @Composable
-fun MovieItem(movie: Movie) {
-    Column (
+fun MovieItem(movie: Movie, onClick: () -> Unit) {
+    Row (
         modifier = Modifier
-            .width(120.dp)
-            .padding(8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+            .fillMaxWidth()
+            .padding(vertical = 8.dp)
+            .clickable { onClick() }
     ){
-        Image(
-            painter = painterResource(id = movie.imageResId),
-            contentDescription = movie.name,
-            modifier = Modifier.size(80.dp)
+        Image(painter = painterResource(id = movie.imageResId),
+        contentDescription = movie.name,
+        modifier = Modifier
+            .size(150.dp, 85.dp)
+            .align(Alignment.CenterVertically)
         )
-        Text(
-            text = movie.name,
-            color = Color.Black,
-            textAlign = TextAlign.Center
-        )
+        Column (
+            modifier = Modifier
+                .padding(start = 8.dp)
+                .align(Alignment.CenterVertically)
+        ){
+            Text(
+                text = movie.name,
+                color = Color.Black,
+                maxLines = 2,
+                style = MaterialTheme.typography.bodyMedium
+            )
+            Text(
+                text = "Release Year: ${movie.releaseYear}",
+                fontSize = 14.sp,
+                color = Color.Gray
+            )
+            Text(
+                text = "Director: ${movie.director}",
+                fontSize = 14.sp,
+                color = Color.Gray
+            )
+        }
     }
 }
