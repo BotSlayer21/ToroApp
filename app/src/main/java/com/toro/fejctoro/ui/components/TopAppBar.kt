@@ -27,7 +27,7 @@ fun CustomTopAppBar(navController: NavController, title: String) {
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF4CAF50)
+            containerColor = Color(0xFF37AFE1)
         ),
         navigationIcon = {
             IconButton(onClick = { navController.popBackStack() }) {
@@ -50,7 +50,7 @@ fun HomeTopAppBar(title: String) {
             )
         },
         colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF4CAF50)
+            containerColor = Color(0xFF37AFE1)
         ),
     )
 }
