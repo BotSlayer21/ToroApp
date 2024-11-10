@@ -16,7 +16,26 @@ import androidx.navigation.NavController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CustomTopAppBar(navController: NavController, title: String) {
+fun HomeTopAppBar(title: String) {
+    TopAppBar(
+        title = {
+            Text(
+                text = title,
+                color = Color.White,
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold,
+            )
+        },
+        colors = TopAppBarDefaults.topAppBarColors(
+            containerColor = Color(0xFF37AFE1)
+        ),
+    )
+}
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DetailTopAppBar(navController: NavController, title: String) {
     TopAppBar(
         title = {
             Text(
@@ -37,20 +56,3 @@ fun CustomTopAppBar(navController: NavController, title: String) {
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun HomeTopAppBar(title: String) {
-    TopAppBar(
-        title = {
-            Text(
-                text = title,
-                color = Color.White,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-            )
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color(0xFF37AFE1)
-        ),
-    )
-}

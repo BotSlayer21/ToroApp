@@ -7,15 +7,19 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -31,15 +35,20 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.toro.fejctoro.ui.components.BottomNavBar
-import com.toro.fejctoro.ui.components.CustomTopAppBar
+import com.toro.fejctoro.ui.components.HomeTopAppBar
 import com.toro.fejctoro.ui.models.DataGame
+import com.toro.fejctoro.ui.theme.FEJCToroTheme
 
 @Composable
 fun GamePage(navController: NavController){
-    val gameList = DataGame.getGameData()
+    val searchQuery = remember { mutableStateOf("") }
+
+    val filteredGames = DataGame.getGameData().filter {
+        it.name.contains(searchQuery.value, ignoreCase = true)
+    }
     Scaffold (
         topBar = {
-            CustomTopAppBar(navController=navController, title = "Games")
+            HomeTopAppBar(title = "My Favorite Games")
         },
         bottomBar = {
             BottomNavBar(navController = navController)
@@ -51,25 +60,28 @@ fun GamePage(navController: NavController){
                     .navigationBarsPadding()
                     .fillMaxSize()
                     .background(Color(0xFFF1F3C2))
-                    .padding(padding),
+                    .padding(top = 60.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ){
-                Text(
-                    "My Favorite Games",
-                    fontSize = 24.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFF2E7D32),
-                    modifier = Modifier.padding(bottom = 16.dp)
+                OutlinedTextField(
+                    value = searchQuery.value,
+                    onValueChange = { searchQuery.value = it},
+                    label = { Text("Search")},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp)
                 )
                 LazyVerticalGrid(
                     columns = GridCells.Fixed(2),
                     verticalArrangement = Arrangement.spacedBy(16.dp),
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .padding(bottom = padding.calculateBottomPadding())
+                        .fillMaxSize(),
                 ) {
-                    items (gameList.size) { index ->
-                        val game = gameList[index]
+                    items (filteredGames.size) { index ->
+                        val game = filteredGames[index]
                         Box(
                             modifier = Modifier
                                 .height(180.dp)
@@ -114,5 +126,7 @@ fun GamePage(navController: NavController){
 @Preview(showBackground = true)
 @Composable
 fun GamePagePreview() {
-    GamePage(navController = rememberNavController())
+    FEJCToroTheme {
+        GamePage(navController = rememberNavController())
+    }
 }

@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.toro.fejctoro.ui.components.CustomTopAppBar
 import com.toro.fejctoro.ui.components.DescDetailText
+import com.toro.fejctoro.ui.components.DetailTopAppBar
 import com.toro.fejctoro.ui.components.ErrorMsg
 import com.toro.fejctoro.ui.components.ReleaseYear
 import com.toro.fejctoro.ui.components.TitleDetailText
@@ -39,11 +41,13 @@ fun DetailMoviePage(navController: NavController, movieId: String){
     if (movie != null) {
         Scaffold (
             topBar = {
-                CustomTopAppBar(navController = navController, title = movie.name)
+                DetailTopAppBar(navController = navController, title = movie.name)
             }
         ) { padding ->
             Column (
                 modifier = Modifier
+                    .statusBarsPadding()
+                    .navigationBarsPadding()
                     .background(Color(0xFFF1F3C2))
                     .fillMaxSize()
                     .padding(20.dp)

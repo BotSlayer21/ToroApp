@@ -28,13 +28,13 @@ import androidx.navigation.compose.rememberNavController
 import com.toro.fejctoro.R
 import com.toro.fejctoro.ui.components.AboutText
 import com.toro.fejctoro.ui.components.BottomNavBar
-import com.toro.fejctoro.ui.components.CustomTopAppBar
+import com.toro.fejctoro.ui.components.HomeTopAppBar
 
 @Composable
 fun AboutPage(navController: NavController) {
     Scaffold (
         topBar = {
-            CustomTopAppBar(navController = navController, title = "About Me")
+            HomeTopAppBar(title = "About")
         },
         bottomBar = {
             BottomNavBar(navController = navController)
@@ -48,7 +48,6 @@ fun AboutPage(navController: NavController) {
                     .background(Color(0xFFF1F3C2))
                     .padding(padding),
                 horizontalAlignment = Alignment.CenterHorizontally,
-//            verticalArrangement = Arrangement.Center
             ){
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
@@ -71,9 +70,11 @@ fun AboutPage(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(20.dp))
                 AboutText(title = "Name : Triantoro Rizky Anggara")
+                AboutText(title = "Province : Jambi | City : Jambi")
                 AboutText(title = "Email : t21rizkianggara@gmail.com")
                 AboutText(title = "University : Dinamika Bangsa University")
                 AboutText(title = "Major : Information System")
+                AboutText(title = "Life Moto : Let's live like symbiotic mutualism, avoid being symbiotic comensalism, but never being symbiotic parasitism")
             }
         }
     )

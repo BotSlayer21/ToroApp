@@ -35,7 +35,7 @@ import com.toro.fejctoro.ui.components.HomeTopAppBar
 fun HomeScreen(navController: NavController? = null) {
     Scaffold(
         topBar = {
-            HomeTopAppBar(title = "My Favorite List App")
+            HomeTopAppBar(title = "Home")
         },
         bottomBar = {
             if (navController != null) {
@@ -51,19 +51,18 @@ fun HomeScreen(navController: NavController? = null) {
                     .background(Color(0xFFF1F3C2))
                     .padding(padding),
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                verticalArrangement = Arrangement.Top
             ) {
-                // Nama aplikasi
                 Text(
-                    "Hello my name is\n" +
-                        "Triantoro Rizky Anggara",
+                    "Favorite List App",
                     style = TextStyle(
-                        fontSize = 25.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontSize = 40.sp,
+                        fontWeight = FontWeight.Black,
                         color = Color(0xFF4CAF50)
                     ),
                     textAlign = TextAlign.Center,
                 )
+
                 Spacer(modifier = Modifier.height(20.dp))
                 Image(
                     painter = painterResource(id = R.drawable.me),
@@ -73,13 +72,25 @@ fun HomeScreen(navController: NavController? = null) {
                         .clip(CircleShape)
                         .fillMaxWidth()
                 )
+
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
-                    "This Application is about my favorite\n" +
+                    "Hello my name is\n" +
+                            "Triantoro Rizky Anggara",
+                    style = TextStyle(
+                        fontSize = 25.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color(0xFF4CAF50)
+                    ),
+                    textAlign = TextAlign.Center,
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+                Text(
+                    "This App is about my personal favorite\n" +
                          "Movie, Music, Games, also my profile",
                     style = TextStyle(
                         fontSize = 23.sp,
-//                        fontWeight = FontWeight.Bold,
                         color = Color(0xFF4CAF50)
                     ),
                     textAlign = TextAlign.Center

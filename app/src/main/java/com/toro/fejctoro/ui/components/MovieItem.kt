@@ -39,6 +39,7 @@ fun MovieItem(movie: Movie, onClick: () -> Unit) {
         ){
             Text(
                 text = movie.name,
+                fontSize = 20.sp,
                 color = Color.Black,
                 maxLines = 2,
                 style = MaterialTheme.typography.bodyMedium

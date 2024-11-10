@@ -8,7 +8,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,7 +21,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
-import com.toro.fejctoro.ui.components.CustomTopAppBar
+import com.toro.fejctoro.ui.components.DetailTopAppBar
 import com.toro.fejctoro.ui.components.DescDetailText
 import com.toro.fejctoro.ui.components.ErrorMsg
 import com.toro.fejctoro.ui.components.ReleaseYear
@@ -35,11 +37,13 @@ fun DetailMusicPage(navController: NavController, musicId: String){
     if (music != null) {
         Scaffold (
             topBar = {
-                CustomTopAppBar(navController = navController, title = music.name)
+                DetailTopAppBar(navController = navController, title = music.name)
             }
         ) { padding ->
             Column (
                 modifier = Modifier
+                    .statusBarsPadding()
+                    .navigationBarsPadding()
                     .background(Color(0xFFF1F3C2))
                     .fillMaxSize()
                     .padding(20.dp)
